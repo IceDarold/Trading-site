@@ -56,7 +56,7 @@ def draw():
         strategy_l.append(strategy_item.name)
     tickers_list = ["None"]
     tickers_list.extend(get_tickers())
-    st.sidebar.page_link("pages/main_menu.py", label="В меню")
+    st.sidebar.page_link("main_menu.py", label="В меню")
     # Боковая панель для параметров
     st.sidebar.title("Параметры графика")
     ticker = st.sidebar.selectbox("Выберите котировку:", tickers_list, index=1)
