@@ -48,6 +48,11 @@ class Deal:
 
 class SimulationSystem:
     def __init__(self, buy_function, sell_function, initial_balance=1000, commission=0):
+        """
+        Params:
+            buy_function (function): function, which gives a buy signal. It takes ref to SimulationSystem and date of required prediction
+            sell_function (function): function, which gives a sell signal. It takes ref to SimulationSystem and date of required prediction
+        """
         self.initial_balance = initial_balance
         self.balance = initial_balance
         self.common_balance = self.balance
@@ -79,7 +84,14 @@ class SimulationSystem:
     def real_trade(self):
         pass
 
+    def get_price_by_date(self, date):
+        return self.actual_prices[self.actual_prices["Date"] == date]["Close"]
+
     def simulate_trading(self, actual_prices: pd.DataFrame):
+        """
+        Params
+            actual_prices (pd.DataFrame): real prices, which our model need to predict
+        """
         self.actual_prices = actual_prices
         for i in range(0, len(actual_prices.Close) - 1):
             actual_price_today = actual_prices.Close[i]

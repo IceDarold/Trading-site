@@ -2,6 +2,7 @@ import streamlit as st
 from utilities import get_tickers
 from func.ticker_page import show
 from Strategies.RandomStrategy import RandomStrategy
+from Strategies.LinearRegressionStrategy import LinearRegressionStrategy
 from Strategies.TradeStrategy import TradeStrategy
 from tickers import get_ticker_data
 import streamlit as st
@@ -50,7 +51,7 @@ def calculate_date_difference(date1_str, date2_str):
         return "0 дней"
 
 def draw():
-    trade_strategies = [RandomStrategy(None)]
+    trade_strategies = [RandomStrategy(None), Li]
     strategy_l = ["None"]
     for strategy_item in trade_strategies:
         strategy_l.append(strategy_item.name)
