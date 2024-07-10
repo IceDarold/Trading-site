@@ -10,7 +10,6 @@ def get_tickers() -> list[str]:
         if filename.endswith('.csv'):
             with open("Data/" + filename, "r") as f:
                 columns = f.readline()[:-1].split(",")
-                print(columns)
                 if "Date" in columns and "Close" in columns:
                     # Добавление имени файла без расширения в список
                     filenames.append(os.path.splitext(filename)[0])
@@ -18,5 +17,3 @@ def get_tickers() -> list[str]:
                     print("Отсутствует колонка Date или Close")
     
     return filenames
-
-print(get_tickers())
